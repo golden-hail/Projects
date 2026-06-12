@@ -1,0 +1,1539 @@
+{
+  "framework": "tkinter",
+  "projectName": "ShinyDex",
+  "canvasData": [
+    {
+      "id": "main_window_mqb27j1i4oq4vbl7w8t",
+      "children": [
+        {
+          "id": "label_mqb6no5f4b8nrqp34xx",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 0,
+              "y": 0
+            },
+            "size": {
+              "width": 112,
+              "height": 107
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "center",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "",
+              "imageUpload": {
+                "name": "bluebutton.png",
+                "previewUrl": "blob:file:///6cbe25af-cd38-4d62-8d35-55db23814a1b"
+              },
+              "imageSize.mode": "cover",
+              "font.fontFamily": "",
+              "font.fontSize": 13,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "list_box_mqb2bd51wy9gxixmp1",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "List box",
+            "pos": {
+              "x": 33.00000000000002,
+              "y": 156.00000000000009
+            },
+            "size": {
+              "width": 227,
+              "height": 302
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#E4E2E2",
+              "styling.foregroundColor": "#000000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.selectBackground": "",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 20,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "listItems": [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h"
+              ],
+              "scrollBar.yScroll": true,
+              "scrollBar.xScroll": false,
+              "selectMode": "",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "list_box"
+        },
+        {
+          "id": "label_mqb2w9m61anmutx2jx1j",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 396.0000000000002
+            },
+            "size": {
+              "width": 96,
+              "height": 32
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#ffffff",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "w",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Nickname",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "entry_mqb3605p5atlht7psqc",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Location",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 363.0000000000002
+            },
+            "size": {
+              "width": 200,
+              "height": 28
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "entry"
+        },
+        {
+          "id": "label_mqb5yx62r9h9krq3tna",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 330.00000000000017
+            },
+            "size": {
+              "width": 80,
+              "height": 29
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#f7f1f1",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "w",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Location",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "label_mqb5ab8pjzfm6r6jqbf",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 264.00000000000017
+            },
+            "size": {
+              "width": 202,
+              "height": 30
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#e9dfdf",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "w",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Date of Capture",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "entry_mqb39doy44lze9giade",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Data Captured",
+            "pos": {
+              "x": 299.00000000000017,
+              "y": 297.00000000000017
+            },
+            "size": {
+              "width": 197,
+              "height": 28
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "entry"
+        },
+        {
+          "id": "label_mqb5v5evvxdhfbafrl9",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 528.0000000000003,
+              "y": 264.00000000000017
+            },
+            "size": {
+              "width": 79,
+              "height": 32
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#f5f1f1",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "w",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Gender",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "radio_frame_mqb2cfbrqgv9v1uyra",
+          "children": [
+            {
+              "id": "radiobutton_mqb2cfcgnlufo7vkyie",
+              "children": [],
+              "parent": "radio_frame_mqb2cfbrqgv9v1uyra",
+              "initialData": {
+                "pos": {
+                  "x": 1.2656250000000007,
+                  "y": 4.000000000000003
+                },
+                "attrs": {
+                  "styling.backgroundColor": "#E4E2E2",
+                  "styling.foregroundColor": "#000",
+                  "styling.borderWidth": 0,
+                  "styling.relief": "FLAT",
+                  "styling.activeBackground": "#E4E2E2",
+                  "styling.activeForeground": "#000",
+                  "widgetLibrary": "ttk",
+                  "font.fontFamily": "",
+                  "font.fontSize": 15,
+                  "font.fontWeight": false,
+                  "font.fontItalics": false,
+                  "font.fontUnderline": false,
+                  "cursor": "",
+                  "radios": {
+                    "inputs": [
+                      "Male",
+                      "Female",
+                      "No Gender",
+                      "Unknown"
+                    ],
+                    "selectedRadio": -1
+                  },
+                  "gap": 0,
+                  "orient": "column",
+                  "layout": {
+                    "layout": null,
+                    "gap": 10
+                  }
+                },
+                "packAttrs": {
+                  "side": "top",
+                  "anchor": "n"
+                },
+                "positionType": "unset",
+                "parentLayout": {
+                  "layout": "flex",
+                  "gap": 2
+                },
+                "zIndex": 0,
+                "widgetContainer": "widget",
+                "selected": false,
+                "widgetName": "Radio button",
+                "size": {
+                  "width": 210,
+                  "height": 377
+                },
+                "fitContent": {
+                  "width": false,
+                  "height": false
+                },
+                "draggable": false
+              },
+              "extraProps": {},
+              "widgetClass": "radiobutton"
+            }
+          ],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Frame",
+            "pos": {
+              "x": 528.0000000000003,
+              "y": 297.00000000000017
+            },
+            "size": {
+              "width": 100,
+              "height": 100
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#EDECEC",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "layout": {
+                "layout": "flex",
+                "gap": 2
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            },
+            "radioButtonId": "radiobutton_mqb2cfcgnlufo7vkyie"
+          },
+          "extraProps": {},
+          "widgetClass": "radio_frame"
+        },
+        {
+          "id": "entry_mqb2oy4o0vuzd86eux1p",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Encounters",
+            "pos": {
+              "x": 528.0000000000003,
+              "y": 429.0000000000002
+            },
+            "size": {
+              "width": 101,
+              "height": 29
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "entry"
+        },
+        {
+          "id": "label_mqb2t4zt7akvcdmrh6d",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 516.0000000000003,
+              "y": 399.0000000000002
+            },
+            "size": {
+              "width": 106,
+              "height": 30
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#ffffff",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "center",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Encounters   ",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "button_mqb2b0g7yecel7cyrpk",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Button",
+            "pos": {
+              "x": 660.0000000000003,
+              "y": 293.00000000000017
+            },
+            "size": {
+              "width": 130,
+              "height": 167
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#566899",
+              "styling.foregroundColor": "#f6f9fc",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.activeBackground": "#E4E2E2",
+              "styling.activeForeground": "#000",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 20,
+              "font.fontWeight": true,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "buttonLabel": "Submit",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "button"
+        },
+        {
+          "id": "entry_mqb2uemdfgqvuiuirc",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Nickname",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 429.0000000000002
+            },
+            "size": {
+              "width": 202,
+              "height": 28
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "entry"
+        },
+        {
+          "id": "option_menu_mqb2c1blrfzk100g8y",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Variation",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 231.00000000000014
+            },
+            "size": {
+              "width": 195,
+              "height": 31
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "defaultValue": "Variation?",
+              "widgetOptions": {
+                "inputs": [
+                  "Alolan",
+                  "Galarian",
+                  "Hisuian",
+                  "original"
+                ],
+                "selectedRadio": -1
+              },
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "option_menu"
+        },
+        {
+          "id": "option_menu_mqb2y9vulmocvds351",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Original Game",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 165.00000000000009
+            },
+            "size": {
+              "width": 193,
+              "height": 34
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "defaultValue": "Game Found In",
+              "widgetOptions": {
+                "inputs": [
+                  "option 1"
+                ],
+                "selectedRadio": -1
+              },
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "option_menu"
+        },
+        {
+          "id": "option_menu_mqb33y8f3cckg5oa83l",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Option menu",
+            "pos": {
+              "x": 528.0000000000003,
+              "y": 231.00000000000014
+            },
+            "size": {
+              "width": 125,
+              "height": 33
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "defaultValue": "Nature",
+              "widgetOptions": {
+                "inputs": [
+                  "option 1"
+                ],
+                "selectedRadio": -1
+              },
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "option_menu"
+        },
+        {
+          "id": "option_menu_mqb34nfyikydvwypm3",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Option menu",
+            "pos": {
+              "x": 693.0000000000003,
+              "y": 231.00000000000014
+            },
+            "size": {
+              "width": 95,
+              "height": 36
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "defaultValue": "Ball",
+              "widgetOptions": {
+                "inputs": [
+                  "option 1"
+                ],
+                "selectedRadio": -1
+              },
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "option_menu"
+        },
+        {
+          "id": "option_menu_mqb37d6vly98tl8wutk",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Option menu",
+            "pos": {
+              "x": 528.0000000000003,
+              "y": 165.00000000000009
+            },
+            "size": {
+              "width": 258,
+              "height": 31
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 15,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "defaultValue": "Hunting Method",
+              "widgetOptions": {
+                "inputs": [
+                  "option 1"
+                ],
+                "selectedRadio": -1
+              },
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "option_menu"
+        },
+        {
+          "id": "label_mqb8aw6419za3uc9nnh",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 297.00000000000017,
+              "y": 113.00000000000006
+            },
+            "size": {
+              "width": 490,
+              "height": 33
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#566899",
+              "styling.foregroundColor": "#ffffff",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "center",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Enter your shiny Pokemon data:",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 17,
+              "font.fontWeight": true,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "label_mqb57u055q6yshex6d",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 33.00000000000002,
+              "y": 462.0000000000003
+            },
+            "size": {
+              "width": 220,
+              "height": 37
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#e9dfdf",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "sw",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Notes on Capture",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 18,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "Text_mqb2exbijzv0v8nu22s",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Description",
+            "pos": {
+              "x": 33.00000000000002,
+              "y": 495.0000000000003
+            },
+            "size": {
+              "width": 759,
+              "height": 106
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d9d4d4",
+              "styling.foregroundColor": "#000",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "padding.padX": null,
+              "padding.padY": null,
+              "font.fontFamily": "Arial",
+              "font.fontSize": 16,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "layout": {
+                "layout": null,
+                "gap": 10
+              }
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "Text"
+        },
+        {
+          "id": "label_mqb61gkx4h9yq35juyn",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 1000,
+            "selected": true,
+            "widgetName": "Label",
+            "pos": {
+              "x": 231.00000000000014,
+              "y": 0
+            },
+            "size": {
+              "width": 371,
+              "height": 100
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#ffffff",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "center",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Shiny Dex",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 50,
+              "font.fontWeight": true,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        },
+        {
+          "id": "label_mqb2vjau7jdnmch32yw",
+          "children": [],
+          "parent": "main_window_mqb27j1i4oq4vbl7w8t",
+          "initialData": {
+            "zIndex": 0,
+            "selected": false,
+            "widgetName": "Label",
+            "pos": {
+              "x": 31.984375000000018,
+              "y": 112.42187500000006
+            },
+            "size": {
+              "width": 222,
+              "height": 38
+            },
+            "fitContent": {
+              "width": false,
+              "height": false
+            },
+            "widgetContainer": "widget",
+            "parentLayout": {
+              "layout": "absolute",
+              "gap": 10
+            },
+            "positionType": "absolute",
+            "attrs": {
+              "styling.backgroundColor": "#d62929",
+              "styling.foregroundColor": "#e9dfdf",
+              "styling.borderWidth": 0,
+              "styling.relief": "",
+              "styling.anchor": "w",
+              "layout": {
+                "layout": "absolute",
+                "gap": 10
+              },
+              "widgetLibrary": "ttk",
+              "eventHandlers": [],
+              "margin.marginX": null,
+              "margin.marginY": null,
+              "labelWidget": "Pokemon",
+              "imageUpload": "",
+              "imageSize.mode": "cover",
+              "font.fontFamily": "Arial",
+              "font.fontSize": 32,
+              "font.fontWeight": false,
+              "font.fontItalics": false,
+              "font.fontUnderline": false,
+              "cursor": "",
+              "padding.padX": null,
+              "padding.padY": null
+            },
+            "draggable": true,
+            "packAttrs": {
+              "side": "top",
+              "anchor": "n"
+            }
+          },
+          "extraProps": {},
+          "widgetClass": "label"
+        }
+      ],
+      "parent": "",
+      "initialData": {
+        "pos": {
+          "x": -33.32812500000002,
+          "y": 32.87500000000002
+        },
+        "zIndex": 0,
+        "selected": false,
+        "widgetName": "main",
+        "size": {
+          "width": 829,
+          "height": 664
+        },
+        "fitContent": {
+          "width": false,
+          "height": false
+        },
+        "widgetContainer": "canvas",
+        "positionType": "absolute",
+        "attrs": {
+          "styling.backgroundColor": "#d62929",
+          "layout": {
+            "layout": "absolute",
+            "gap": 10
+          },
+          "eventHandlers": [],
+          "resizable.x": false,
+          "resizable.y": false,
+          "maximized": false,
+          "initialPosition.x": 0,
+          "initialPosition.y": 0,
+          "initialPosition.positionList": "",
+          "title": "Create New Shiny Entry",
+          "menuHidden": true,
+          "logo": ""
+        },
+        "draggable": true,
+        "packAttrs": {
+          "side": "top",
+          "anchor": "n"
+        },
+        "menuData": [
+          {
+            "name": "File",
+            "items": [
+              {
+                "name": "New",
+                "items": []
+              },
+              {
+                "name": "Open",
+                "items": []
+              }
+            ]
+          },
+          {
+            "name": "Edit",
+            "items": []
+          }
+        ]
+      },
+      "extraProps": {},
+      "widgetClass": "main_window"
+    }
+  ],
+  "code": ""
+}
