@@ -8,34 +8,27 @@ from pyuiWidgets.imageLabel import ImageLabel
 from pyuiWidgets.listBox import ScrollableListbox
 import pandas as pd
 
-nat_dex = pd.read_excel('Shiny_Dex_og.xlsx', sheet_name = 'pokedex')
-goog_dex = pd.read_excel('Shiny_Dex_og.xlsx', sheet_name = 'googdex')
+dex_raw = pd.read_excel('Shiny_Dex.xlsx', sheet_name = 'shiny_dex')
+nat_dex = pd.read_excel('Shiny_Dex.xlsx', sheet_name = 'pokedex')
+dex_raw = dex_raw.drop(["Unnamed: 16"], axis = 1)
 
 def add_2_shiny_db():
     # Auto calculate entry No to database
-    breakpoint()
-    # import dex to add new entry
-    dex_raw = pd.read_excel('Shiny_Dex_og.xlsx', sheet_name = 'shiny_dex')
-    if "Unnamed: 16" in dex_raw:
-        dex_raw = dex_raw.drop(["Unnamed: 16"], axis = 1)
-        
     entry = dex_raw['entryNo'].max() + 1 
     #! Need to autolook this up based on Pokemon Name in future
     no = 0 # !int, link in later
-    # mon = list_box.get()
     mon = 'Fake Mon' # !come back to
     variat = variation_in.get()
     gender = gender_in.get()
     og_game = original_game.get()
     loca = location_in.get()
-    date_cap = [] #! def check_date_cap:
+    date_cap = [] #! come back to
     meth = hunt_method.get() 
     nickname = nickname_in.get()
     nature = nature_menu.get()
     ball = ball_menu.get()
-    encounts = encounters.get()
-    description = "none" #! Come back to
-    # description = entry_note.get()
+    encounts = encount.get()
+    description = entry_note.get()
     
     # Input Trainer Name to Sign in
     trainer = "Fake-o Joe"
@@ -48,8 +41,8 @@ def add_2_shiny_db():
     
     #! save output to new excel
     # Export to xlsx
-    dex_raw.to_excel('Shiny_Dex.xlsx', sheet_name = "shiny_dex")
-    
+    dex_raw.to_excel('dexport.xlsx', sheet_name = "Sheet_12345")
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 ## Main menu set up
@@ -94,13 +87,13 @@ pokemon.configure(anchor="w")
 pokemon.place(x=31, y=115, width=222, height=38)
 
 ## Choose from Pokemon List
-pokemon_list = nat_dex["Pokemon"]
+pokemon_list = ["a","b","c","d","e","f","g","h"]
 list_box = ScrollableListbox(parent=main, scrollx=False, scrolly=True)
 
 for i in pokemon_list:
 	list_box.insert(tk.END, i)
 
-list_box.config(bg="#E4E2E2", fg="#000000", font=("Arial", 14))
+list_box.config(bg="#E4E2E2", fg="#000000", font=("Arial", 20))
 list_box.place(x=33, y=156, width=227, height=302)
 
 ## Original Game
@@ -132,36 +125,36 @@ data_captured = ttk.Entry(master=main, style="data_captured.TEntry")
 data_captured.place(x=299, y=297, width=197, height=28)
 
 ## Location Caught
-style.configure("location_in.TEntry", fieldbackground="#d9d4d4", foreground="#000", font=("Arial", 15))
+style.configure("location.TEntry", fieldbackground="#d9d4d4", foreground="#000", font=("Arial", 15))
 
-location_in = ttk.Entry(master=main, style="location_in.TEntry")
-location_in.place(x=297, y=363, width=200, height=28)
+location = ttk.Entry(master=main, style="location.TEntry")
+location.place(x=297, y=363, width=200, height=28)
 
-style.configure("location_lab.TLabel", background="#d62929", foreground="#f7f1f1", font=("Arial", 15), anchor="w")
-location_lab = ttk.Label(master=main, text="Location", style="location_lab.TLabel")
-location_lab.configure(anchor="w")
-location_lab.place(x=297, y=330, width=80, height=29)
+style.configure("location_in.TLabel", background="#d62929", foreground="#f7f1f1", font=("Arial", 15), anchor="w")
+location_in = ttk.Label(master=main, text="Location", style="location_in.TLabel")
+location_in.configure(anchor="w")
+location_in.place(x=297, y=330, width=80, height=29)
 
 ## Gender
 style.configure("gender.TLabel", background="#d62929", foreground="#f5f1f1", font=("Arial", 15), anchor="w")
-gender_lab = ttk.Label(master=main, text="Gender", style="gender.TLabel")
-gender_lab.configure(anchor="w")
-gender_lab.place(x=528, y=264, width=79, height=32)
+gender_in = ttk.Label(master=main, text="Gender", style="gender.TLabel")
+gender_in.configure(anchor="w")
+gender_in.place(x=528, y=264, width=79, height=32)
 
-gender_in = tk.IntVar()
+radio_button_var = tk.IntVar()
 style.configure("radio_button.TRadiobutton", background="#E4E2E2", foreground="#000", relief=tk.FLAT)
 style.map("radio_button.TRadiobutton", background=[("active", "#E4E2E2")], foreground=[("active", "#000")])
 
-radio_unk = ttk.Radiobutton(master=frame, variable=gender_in, text="Unknown", value=0, style="radio_button.TRadiobutton")
+radio_unk = ttk.Radiobutton(master=frame, variable=radio_button_var, text="Unknown", value=0, style="radio_button.TRadiobutton")
 radio_unk.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
-radio_male = ttk.Radiobutton(master=frame, variable=gender_in, text="Male", value=1, style="radio_button.TRadiobutton")
+radio_male = ttk.Radiobutton(master=frame, variable=radio_button_var, text="Male", value=1, style="radio_button.TRadiobutton")
 radio_male.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
-radio_female = ttk.Radiobutton(master=frame, variable=gender_in, text="Female", value=2, style="radio_button.TRadiobutton")
+radio_female = ttk.Radiobutton(master=frame, variable=radio_button_var, text="Female", value=2, style="radio_button.TRadiobutton")
 radio_female.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
-radio_no_gen = ttk.Radiobutton(master=frame, variable=gender_in, text="No Gender", value=3, style="radio_button.TRadiobutton")
+radio_no_gen = ttk.Radiobutton(master=frame, variable=radio_button_var, text="No Gender", value=3, style="radio_button.TRadiobutton")
 radio_no_gen.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
 ## Encounters
@@ -213,7 +206,7 @@ ball_var = tk.StringVar(value="Ball")
 ball_menu = ttk.Combobox(main, textvariable=ball_var, values=ball_options, style="ball_menu.TCombobox")
 ball_menu.place(x=693, y=231, width=95, height=36)
 
-## Shiny Hunting Method
+##! Shiny Hunting Method
 style.configure("hunt_method.TCombobox", fieldbackground="#d9d4d4", foreground="#000", font=("Arial", 15, ))
 hunt_method_options = ['Event', 'Chain Fishing', 'Horde Encounters', 'Random Encounters',
        'Catch Combo', 'Spotlight Hour', 'Community Day', 'Battle Method',
@@ -235,7 +228,7 @@ entry_note = tk.Text(master=main)
 entry_note.config(bg="#d9d4d4", fg="#000", font=("Arial", 16))
 entry_note.place(x=33, y=495, width=759, height=106)
 
-## Submit entry buttton 
+## Submit entry buttton (pipe function)
 style.configure("button.TButton", background="#566899", foreground="#f6f9fc", font=("Arial", 20, "bold"))
 style.map("button.TButton", background=[("active", "#E4E2E2")], foreground=[("active", "#000")])
 
