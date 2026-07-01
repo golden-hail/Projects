@@ -14,7 +14,7 @@ goog_dex = pd.read_excel('Shiny_Dex_og.xlsx', sheet_name = 'googdex')
 def add_2_shiny_db():
     # Auto calculate entry No to database
     # import dex to add new entry
-    dex_raw = pd.read_excel('Shiny_Dex.xlsx', sheet_name = 'shiny_dex')
+    dex_raw = pd.read_excel('Shiny_Dex_Out.xlsx', sheet_name = 'shiny_dex')
     # drop bad columns
     cols_2_drop = dex_raw.filter(regex=r'Unnamed:').columns
     dex_raw = dex_raw.drop(columns=cols_2_drop)
@@ -22,54 +22,52 @@ def add_2_shiny_db():
     entry = dex_raw['entryNo'].max() + 1 
     
     # get selected Pokemon
-    selected_indices = mon_listbox.curselection() # Do i have an error for thisif they don't pick any mon??
+    selected_indices = mon_listbox.curselection() # Do have an error for this if they don't pick any mon??
     # check if the user has selected a mon
     if selected_indices:
         # get the first index from the tuple
         index = selected_indices[0] 
-        mon = mon_listbox.get(index) 
-        # find the NdexNo based on the name of the mon
-        # NdexNo where nat_dex["Pokemon"] == mon
+        mon = mon_listbox.get(index) ## COME BACK TO we have doubles
+        # find the NdexNo based on the mon
         mon_deets = nat_dex.loc[nat_dex["Pokemon"] == mon]
-        no = mon_deets.iloc[0]['NdexNo'] 
+        no = mon_deets.iloc[0]['NdexNo']
+        ## if variat and mon combo don't exist: just enter mon, not variat
+        variat = variat_menu.get() 
+        # if variat == "Alola":
+        # variat = "Alolan"
+        # mon_deets['Region'][mon_deets['Region'].str.contains(variat)] == True
+            # check nat_dex to see if valid variat nat_dex["Pokemon"] exists
     else:
         mon = 'Fake Mon'
         no = 0 
-    breakpoint()
-    # get index of where "Hisuian" is a part of the entry
-    # Check that variation of mon exists
-    variat = variat_menu.get()
-    # if variat == 'Hisuian':
-    #     hisui = nat_dex[nat_dex['Pokemon'].str.contains('Hisuian')]
-    #     hisui.[hisui['Pokemon']].str.contains(mon)
-    #     if mon in hisui:
-            
-    # elif variat == "Alolan":
-    #     alolan = nat_dex[nat_dex['Pokemon'].str.contains('Alolan')]
-    # elif variat == "Galarian":
-    #     galarian = nat_dex[nat_dex['Pokemon'].str.contains('Galarian')]
-    # else:
-    #     pass
-    # on spreadsheet, change each "Region" column to the actual region the vairaiants are from
-            
-    # for i in nat_dex["Pokemon"]
-    # if variat:
-        # check nat_dex to see if valid variat nat_dex["Pokemon"] exists
-    # gender = gender_in.get()
-    gender = 'female'
+        variat = ''
+    
+    gend_sel = gender_sel_var.get()
+    if gend_sel == 0:
+        gender = "Unknown"
+    elif gend_sel == 1:
+        gender = "Male"
+    elif gend_sel == 2:
+        gender = "Female"
+    else:
+        gender = "No Gender"
     og_game = og_game_entry.get()
     loca = loc_entry.get()
-    date_cap = [] #! def check_date_cap:
-    # method = hunt_entry.get() 
-    method = ""
+    date_cap = date_entry.get() #! def check_date_cap:
+    # dex_raw['DateOfCapture']
+        # see if is datetime for each row, filter out
+        # then sort by and see when my newest entry was!
+        
+    method = hunt_entry.get() 
     nickname = ni_name_entry.get()
     nature = natr_menu.get()
     ball = ball_menu.get()
-    encounts = encount_entry.get()
+    encounts = encount_entry.get() # if it's a string..
     descript =  description.get("1.0", "end-1c")
     
     # Input Trainer Name to Sign in
     trainer = "Fake-o Joe"
+    # trainer = "Tonii"
     form = ""
     
     # add the entry to the Shiny Dex database 
@@ -78,7 +76,7 @@ def add_2_shiny_db():
                                  nature, ball, encounts, descript, trainer]
     #! save output to new excel
     # Export to xlsx
-    dex_raw.to_excel('Shiny_Dex.xlsx', sheet_name = "shiny_dex", index = False)
+    dex_raw.to_excel('Shiny_Dex_Out.xlsx', sheet_name = "shiny_dex", index = False)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -112,7 +110,7 @@ mon_lab.configure(anchor="w")
 mon_lab.place(x=31, y=112, width=229, height=43)
 
 ## Choose from Pokemon List
-mon_list = nat_dex["Pokemon"]
+mon_list = nat_dex["Pokemon"].sort_values()
 mon_listbox = ScrollableListbox(parent=main, scrollx=False, scrolly=True, exportselection=False)
 
 for i in mon_list:
@@ -153,17 +151,17 @@ gender_sel_var = tk.IntVar()
 style.configure("gender_sel.TRadiobutton", background="#E4E2E2", foreground="#000", relief=tk.FLAT)
 style.map("gender_sel.TRadiobutton", background=[("active", "#E4E2E2")], foreground=[("active", "#000")])
 
-gender_sel_0 = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="Male", value=0, style="gender_sel.TRadiobutton")
-gender_sel_0.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
+gender_sel_unk = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="Unknown", value=0, style="gender_sel.TRadiobutton")
+gender_sel_unk.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
-gender_sel_1 = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="Female", value=1, style="gender_sel.TRadiobutton")
-gender_sel_1.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
+gender_sel_m = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="Male", value=1, style="gender_sel.TRadiobutton")
+gender_sel_m.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
-gender_sel_2 = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="No Gender", value=2, style="gender_sel.TRadiobutton")
-gender_sel_2.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
+gender_sel_f = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="Female", value=2, style="gender_sel.TRadiobutton")
+gender_sel_f.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
-gender_sel_3 = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="Unknown", value=3, style="gender_sel.TRadiobutton")
-gender_sel_3.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
+gender_sel_ng = ttk.Radiobutton(master=frame, variable=gender_sel_var, text="No Gender", value=3, style="gender_sel.TRadiobutton")
+gender_sel_ng.pack(side=tk.TOP, fill="both", expand=True, padx=0, pady=0)
 
 ## Encounters Entry
 style.configure("enc_lab.TLabel", background="#d62929", foreground="#ffffff", font=("Arial", 15), anchor="center")
@@ -194,9 +192,9 @@ variation_lab.configure(anchor="w")
 variation_lab.place(x=295, y=202, width=202, height=30)
 
 style.configure("variat_menu.TCombobox", fieldbackground="#d9d4d4", foreground="#000", font=("Arial", 15, ))
-variat_menu_options = ["Alolan","Galarian","Hisuian","N/A"]
+variat_menu_options = ["Alolan","Galarian","Hisuian","Paldean","N/A"]
 variat_menu_var = tk.StringVar(value="")
-variat_menu = ttk.Combobox(main, textvariable=variat_menu_var, values=variat_menu_options, style="variat_menu.TCombobox")
+variat_menu = ttk.Combobox(main, textvariable=variat_menu_var, values=variat_menu_options, style="variat_menu.TCombobox", state="readonly")
 variat_menu.place(x=297, y=231, width=195, height=31)
 
 ## Game Selection
@@ -207,12 +205,12 @@ og_game_lab.place(x=295, y=136, width=202, height=30)
 
 style.configure("og_game_entry.TCombobox", fieldbackground="#d9d4d4", foreground="#000", font=("Arial", 15, ))
 og_game_entry_options = ['Yellow', 'Silver', 'Gold', 'Crystal', 'Ruby', 'Sapphire', 'Emerald', 
-           'Fire Red', 'Leaf Green', 'Diamond', 'Pearl', 'Platinum', 'HeartGold', 'Soulsilver', 
+           'Fire Red', 'Leaf Green', 'Diamond', 'Pearl', 'Platinum', 'HeartGold', 'SoulSilver', 
            'Black', 'White', 'Black 2', 'White 2', 'X', 'Y', 'Alpha Sapphire', 'Omega Ruby',
            'Pokemon Go', 'Sun', 'Moon', 'Ultra Sun', 'Ultra Moon', "Let's Go Eevee", "Let's Go Pikachu", 
-           'Sword', 'Shield', 'Shining Pearl', 'Legends of Arceus', 'Scarlet', 'Voilet', 'Legends ZA']
+           'Sword', 'Shield', 'Brilliant Diamond', 'Shining Pearl', 'Legends of Arceus', 'Scarlet', 'Violet', 'Legends ZA']
 og_game_entry_var = tk.StringVar(value="")
-og_game_entry = ttk.Combobox(main, textvariable=og_game_entry_var, values=og_game_entry_options, style="og_game_entry.TCombobox")
+og_game_entry = ttk.Combobox(main, textvariable=og_game_entry_var, values=og_game_entry_options, style="og_game_entry.TCombobox", state="readonly")
 og_game_entry.place(x=297, y=165, width=193, height=34)
 
 ## Nature Selection 
@@ -228,7 +226,7 @@ natr_menu_ops = ['Relaxed', 'Adamant', 'Naive', 'Hardy', 'Impish', 'Rash', 'Lone
        'Bold', 'Gentle', 'Serious', 'Calm', 'Timid', '-'] 
 natr_menu_ops.sort()
 natr_menu_var = tk.StringVar(value="")
-natr_menu = ttk.Combobox(main, textvariable=natr_menu_var, values=natr_menu_ops, style="natr_menu.TCombobox")
+natr_menu = ttk.Combobox(main, textvariable=natr_menu_var, values=natr_menu_ops, style="natr_menu.TCombobox", state="readonly")
 natr_menu.place(x=528, y=231, width=125, height=33)
 
 ## Ball Selection
@@ -244,10 +242,10 @@ ball_ops = ["Poke Ball", "Great Ball", "Ultra Ball", "Master Ball",
                 "Nest Ball", "Repeat Ball", "Timer Ball", "Luxury Ball", "Heal Ball",
                 "Quick Ball", "Dusk Ball", "Dream Ball", "Fast Ball", "Heavy Ball",
                 "Level Ball", "Love Ball", "Moon Ball", "Lure Ball", "Feather Ball",
-                "Wing Ball", "Jet Ball", "Heavy Ball", "Leaden Ball", "Gigaton Ball"]
+                "Wing Ball", "Jet Ball", "Leaden Ball", "Gigaton Ball", "Friend Ball"]
 ball_ops.sort()
 ball_menu_var = tk.StringVar(value="")
-ball_menu = ttk.Combobox(main, textvariable=ball_menu_var, values=ball_ops, style="ball_menu.TCombobox")
+ball_menu = ttk.Combobox(main, textvariable=ball_menu_var, values=ball_ops, style="ball_menu.TCombobox", state="readonly")
 ball_menu.place(x=693, y=231, width=95, height=36)
 
 ## Hunt Selection
@@ -257,14 +255,14 @@ hunt_lab.configure(anchor="w")
 hunt_lab.place(x=526, y=134, width=202, height=30)
 
 style.configure("hunt_entry.TCombobox", fieldbackground="#d9d4d4", foreground="#000", font=("Arial", 15, ))
-hunt_entry_options = ['Event', 'Chain Fishing', 'Horde Encounters', 'Random Encounters',
+hunt_entry_options = ['','Event', 'Chain Fishing', 'Horde Encounters', 'Random Encounters',
        'Catch Combo', 'Spotlight Hour', 'Community Day', 'Battle Method',
        'Raid Den Event', 'Soft Resets', 'Raid Battle', 'Masuda Method',
        'Dynamax Adventures', 'Radar Method', 'Friend Safari',
        'Hoard Encounters', 'Gift', 'Ultra Space Wilds', 'SOS Chaining',
        'Community day', 'Mass Outbreaks', 'Random Encounter', 'DV Method']
 hunt_entry_var = tk.StringVar(value="")
-hunt_entry = ttk.Combobox(main, textvariable=hunt_entry_var, values=hunt_entry_options, style="hunt_entry.TCombobox")
+hunt_entry = ttk.Combobox(main, textvariable=hunt_entry_var, values=hunt_entry_options, style="hunt_entry.TCombobox", state="readonly")
 hunt_entry.place(x=528, y=165, width=258, height=31)
 
 ## Description Entry
