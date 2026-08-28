@@ -1,0 +1,34 @@
+################################################################################
+# Data Intake Cleaning Workflow Checklist
+################################################################################
+
+• Import & Initial Inspection
+	• Import libraries (pandas, numpy, matplotlib.pyplot, seaborn).
+	• Import dataset (pd.read_csv(), pd.read_excel()).
+	• Inspect raw dimensions & sample rows (df.shape, df.head(), df.tail()).
+
+• Structural & Data Type Cleanup
+	• Drop unnecessary columns (df.drop()).
+		axis == 1: column
+		axis == 0: row
+	• Check and fix data types (df.dtypes, df.astype()).
+		If df.dtypes returns '0', the column has mixed data types
+		df['Col Name'].map(type).value_counts() shows each type and a count
+	• Standardize column names (lower casing, replacing spaces with underscores _).
+	• Clean string values (trimming leading/trailing whitespace using .str.strip()).
+
+• Duplicates & Outliers
+	• Check for and remove duplicate rows (df.duplicated(), df.drop_duplicates()).
+	• Identify extreme outliers or impossible values (e.g., negative age, 150-year-old customer) via boxplots or histograms.
+
+• Missing Value Management (NaNs)
+	• Identify missing values (df.isna().sum()).
+	• Decide on a strategy based on data context:
+		○ Drop: If missingness is minimal or rows/columns are non-critical (df.dropna()).
+		○ Simple Imputation: Fill numeric NaNs with median/mean (SimpleImputer from sklearn.impute or df.fillna()).
+		○ Categorical Imputation: Fill text NaNs with "Unknown" or the mode.
+		○ Advanced Imputation: KNNImputer from sklearn.impute.
+
+• Exploratory Data Analysis (EDA) & Summary Statistics
+	• Generate summary statistics on cleaned data (df.describe(include='all')).
+	• Plot distributions and relationships (plt.hist(), sns.boxplot(), sns.pairplot()).

@@ -1,0 +1,42 @@
+from datetime import datetime
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 1. Define the blueprint for a Shiny Pokémon
+class ShinyPokemon:
+    def __init__(self, name, nickname, pokeball, date_caught):
+        self.name = name.strip().title()
+        self.nickname = nickname.strip() if nickname else self.name
+        self.pokeball = pokeball.strip().title()
+        # Convert string date to a datetime object for better plotting
+        self.date_caught = pd.to_datetime(date_caught)
+
+    def to_dict(self):
+        """Converts the object data into a dictionary for Excel exporting."""
+        return {
+            "Name": self.name,
+            "Nickname": self.nickname,
+            "Pokeball": self.pokeball,
+            "DateCaught": self.date_caught
+        }
+
+# 2. Creating new entries from user input
+new_catch = ShinyPokemon(
+    name="Charizard",
+    nickname="Zuko",
+    pokeball="Luxury Ball",
+    date_caught="2026-07-02"
+)
+
+# 3. Saving to Excel using Pandas
+# Convert our class object to a dataframe row
+new_data = pd.DataFrame([new_catch.to_dict()])
+
+try:
+    # Append to existing excel file if it exists
+    existing_df = pd.read_excel("shiny_pokedex.xlsx")
+    final_df = pd.concat([existing_df, new_data], ignore_index=True)
+except FileNotFoundError:
+    final_df = new_data
+
+final_df.to_excel("shiny_pokedex.xlsx", index=False)

@@ -1,0 +1,104 @@
+
+Hypothesis tests are chosen based on the data type (continuous vs. categorical), number of groups, sample size/distribution assumptions (parametric vs. non-parametric), and study design (independent vs. dependent).
+
+Decision guide to help select the correct statistical test based on your data type, group count, and design.
+
+---
+
+## Decision Guide: How to Choose the Right Statistical Test
+
+### Step 1: Identify Your Primary Goal & Data Type
+
+```
+                      What type of data do you have?
+                                     │
+         ┌───────────────────────────┴───────────────────────────┐
+         ▼                                                       ▼
+ Categorical Data                                        Continuous Data
+ (Categories, Counts, Proportions)                      (Measurements, Means, Ratios)
+         │                                                       │
+         ▼                                                       ▼
+   Go to SECTION A                                        Go to SECTION B
+
+```
+
+---
+
+### Section A: Categorical Data (Counts, Proportions, Binary)
+
+* **1 Sample vs. Expected Distribution:**
+* **Chi-Squared Goodness-of-Fit Test** — e.g., *Is a 6-sided die fair?*
+
+
+* **1 Group vs. Known Proportion:**
+* **One-Sample Z-Test for Proportions** — e.g., *Is the coin flip heads rate significantly different from 50%?*
+
+
+* **2 Independent Groups:**
+* **Two-Sample Z-Test for Proportions** — e.g., *A/B testing conversion rates on two different landing pages.*
+
+
+* **2 Paired / Matched Groups:**
+* **McNemar’s Test** — e.g., *Yes/No voting preference before and after watching a debate.*
+
+
+* **2+ Categorical Variables (Relationship / Independence):**
+* **Chi-Squared Test of Independence** — e.g., *Is smoking status (Yes/No) independent of age group?*
+* *(If sample sizes are very small, use **Fisher’s Exact Test** instead).*
+
+---
+
+### Section B: Continuous Data (Means & Relationships)
+
+```
+                            How many groups are you comparing?
+                                          │
+      ┌───────────────────────────────────┼──────────────────────────────────────┐
+      ▼                                   ▼                                      ▼
+   1 Group                                2 Groups                              3+ Groups
+ (vs. Target Value)                       │                                      │
+      │                                   │                                      │
+      ▼                                   ▼                                      ▼
+One-Sample t-Test                 Independent or Paired?                One-Way ANOVA / Kruskal-Wallis
+(or Wilcoxon Signed-Rank)                 │                                      │
+                               ┌──────────┴──────────┐                           │
+                               ▼                     ▼                           │
+                        Independent               Paired                         │
+                             │                       │                           │
+                             ▼                       ▼                           │
+                       Independent t-Test        Paired t-Test                   │
+                     (or Mann-Whitney U)    (or Wilcoxon Signed-Rank)            │
+                                                                                 │
+                                                  ┌──────────────────────────────┘
+                                                  │
+                                     Are groups independent or repeated?
+                                                  │
+                                       ┌──────────┴──────────┐
+                                       ▼                     ▼
+                                Independent              Repeated
+                                     │                       │
+                                     ▼                       ▼
+                              One-Way ANOVA            Repeated Measures ANOVA
+                            (or Kruskal-Wallis)          (or Friedman Test)
+
+```
+
+---
+
+## Quick Reference Summary Table
+
+| What are you testing? | Normal / Parametric Test | Non-Parametric Alternative |
+| --- | --- | --- |
+| **1 Mean vs. Known Value** | One-Sample $t$-test | Wilcoxon Signed-Rank (1-sample) |
+| **2 Independent Means** | Independent Samples $t$-test | Mann-Whitney U Test |
+| **2 Paired / Matched Means** | Paired Samples $t$-test | Wilcoxon Signed-Rank Test |
+| **3+ Independent Means** | One-Way ANOVA | Kruskal-Wallis Test |
+| **3+ Repeated Measurements** | Repeated Measures ANOVA | Friedman Test |
+| **Relationship between 2 variables** | Pearson Correlation | Spearman Rank Correlation |
+
+---
+
+### Key Checkpoints Before Running Parametric Tests:
+
+1. **Normality:** Check if your continuous data is normally distributed (use **Shapiro-Wilk Test**). If violated, switch to the Non-Parametric alternative.
+2. **Equal Variances:** For independent $t$-tests or ANOVA, check if variances across groups are equal (use **Levene’s Test**). If violated, use **Welch’s $t$-test** or **Welch's ANOVA**.

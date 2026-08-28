@@ -58,6 +58,7 @@ ax.text(0.25, 0.92, box_text,
         bbox=box_style)
 # ---------------------------
 plt.tight_layout()
+plt.savefig(fname = "Shinies_per_Year.png")
 plt.show()
 
 # When I work on my GUI, I will be able to filter on date ranges which will make this 

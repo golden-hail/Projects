@@ -59,4 +59,5 @@ ax.text(0.95, 0.92, box_text,
 # ---------------------------
 
 plt.tight_layout()
+plt.savefig(fname = "Shinies_per_Game.png")
 plt.show()

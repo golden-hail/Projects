@@ -1,5 +1,5 @@
 def connect4():
-    # need copy of list, board? since the old didn't get overwritten? 
+    # Starting state: empty board, player 1 goes first
     board = [["0", "0", "0", "0", "0", "0", "0", "0"],
             ["0", "0", "0", "0", "0", "0", "0", "0"],
             ["0", "0", "0", "0", "0", "0", "0", "0"],
@@ -9,7 +9,19 @@ def connect4():
             ["0", "0", "0", "0", "0", "0", "0", "0"]]
     sep = '----------------------------------------'
     col_labels = '  0    1    2    3    4    5    6    7  <--- column numbers'
-        
+    
+    player = 'PLAYER 1'
+    token = 'x'
+    
+    hor_win = 0
+    vert_win = 0
+    game_won = 0
+    col_height = [0, 0, 0, 0, 0, 0, 0, 0]
+    valid_move = False
+    
+    print(sep)
+    print("               CONNECT 4")
+    
     def display_board():
         # set up the board!
         print(sep)
@@ -21,22 +33,12 @@ def connect4():
         print(sep)
         print(col_labels)
         print(sep)
-        
-    # Starting State: Player one's turn (opportunity to do a randomizer on who goes first... and maybe if they want to rematch :) =)
-    player = 'PLAYER 1'
-    token = 'x'
-    
-    hor_win = 0
-    vert_win = 0
-    game_won = 0
-    col_height = [0, 0, 0, 0, 0, 0, 0, 0]
-    valid_move = False
     
     # Game time!
     while game_won == 0:
         display_board()
 
-        # check if if input 'slot_in' is a valid input 
+        # check if input 'slot_in' is a valid input 
         while valid_move == False:
             bot_row = 6
             slot_in = input(f"Your move {player} - Select a slot 0-7: " )
@@ -63,7 +65,6 @@ def connect4():
         # find the correct row to place the token into      
         while board[bot_row][slot_in] != "0":
             bot_row -= 1
-            print(bot_row)
         
         # place the token
         board[bot_row][slot_in] = token
@@ -93,7 +94,7 @@ def connect4():
                 if vert_win == 4:
                     game_won = 1
     
-        # # # check diagonal win
+        # check diagonal win
         # diag_down win check
         for inner_array in board:
             if game_won == 1:
@@ -122,12 +123,12 @@ def connect4():
                         pass
     
         if game_won == 1:
-            display_board() # note print the whole new board at the end to show the win
+            display_board() 
             print(f'Congratulations {player}, you won!')
             print(sep)
-            ## Rematch flag outside of while loop?? LATER
-            replay = input(print("Would you like to have a rematch?: "))
-            if replay.upper == "YES" or "y": # later add conditional for 1 as an input, convert input to string   
+            replay = input("Would you like to have a rematch?: ")
+            breakpoint()
+            if replay.upper() == "YES" or replay.upper() == "Y": 
                 connect4() 
             else:
                 print(sep)
@@ -135,7 +136,7 @@ def connect4():
                 print(sep)
             break
     
-        # switch player, then attempt to start the turn over - if game_won == 1, the turns will end 
+        # switch player, then start the next turn 
         if player == 'PLAYER 1':
             player = 'PLAYER 2'
             token = 's'
@@ -144,6 +145,6 @@ def connect4():
             token = 'x'       
 
 connect4()
+
 # to do
-    # replay functionality
-    # color code console outputs
+    # color code console outputs?

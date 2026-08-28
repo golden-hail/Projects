@@ -63,9 +63,6 @@ pos_types = ['Water', 'Steel', 'Grass', 'Dragon', 'Ghost', 'Dark', 'Fire',
        'Psychic', 'Ground', 'Poison', 'Bug', 'Electric', 'Normal',
        'Fighting', 'Rock', 'Fairy', 'Ice', 'Flying']
 
-# type_1_counts = mon_data.groupby("Type 1")["Type 1"].count()
-# type_2_counts = mon_data.groupby("Type 2")["Type 2"].count()
-
 type_1 = mon_data["Type 1"].value_counts()
 type_2 = mon_data["Type 2"].value_counts()
 
@@ -73,6 +70,8 @@ type_counts = type_1.add(type_2, fill_value = 0)
 type_counts = type_counts.drop('-')
 type_counts = type_counts.reset_index
 
+plt.tight_layout()
+plt.savefig(fname = "plot_Shinies_Types.png")
 plt.bar()
 
 
