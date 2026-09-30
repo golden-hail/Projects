@@ -5,7 +5,7 @@ image: "/posts/checkout_UI.jpg"
 tags: [AB Testing, Hypothesis Testing, Z-Test, Shapiro-Wilk, Mann-Whitney U, Python]
 ---
 
-Can a checkout redesign boost conversion rates without lowering average order values? In this case study, we evaluate a 30-day e-commerce A/B test using a triad of statistical hypothesis tests - combining a Two-Sample Z-Test for Proportions, Shapiro-Wilk normality testing, and a Mann-Whitney U Test—to deliver a data-backed rollout recommendation.
+Can a checkout redesign boost conversion rates without lowering average order values? In this case study, we evaluate a 30-day e-commerce A/B test using a triad of statistical hypothesis tests, combining a Two-Sample Z-Test for Proportions, Shapiro-Wilk normality testing, and a Mann-Whitney U Test to deliver a data-backed rollout recommendation.
 
 ___
 
@@ -121,7 +121,7 @@ print(f'Test AOV = ${test_AOV}')
 >> Test AOV = $4.92
 ```
 
-However, raw descriptive statistics alone cannot determine whether these gains are statistically meaningful or the result of random sampling noise. To establish whether the redesigned UI genuinely drives conversion rate improvements, we evaluate these proportions using a Two-Sample Z-Test for Proportions.
+However, raw descriptive statistics alone cannot determine whether these gains are statistically meaningful or the result of random sampling noise. To establish whether the redesigned UI genuinely drives conversion rate improvements, we evaluate these proportions using a Two Sample Z-Test for Proportions.
 
 ___
 
@@ -292,7 +292,7 @@ ___
 
 Our 30-day A/B experiment confirms that the redesigned checkout UI delivered a statistically significant boost in conversion rate without degrading customer average order values.
 
-Cart-to-purchase conversion increased from 40.21% (Control) to 59.13% (Test), representing a +47.03% relative lift in checkout efficiency. While raw AOV showed a slight increase of $0.51 cents per order, non-parametric testing confirmed this difference is not statistically significant with a p-value of 0.2717.
+Cart-to-purchase conversion increased from 40.21% (Control) to 59.13% (Test), representing a **+47.03% relative lift** in checkout efficiency. While raw AOV showed a slight increase of $0.51 cents per order, non-parametric testing confirmed this difference is not statistically significant with a p-value of 0.2717.
 
 **<u>Business Impact:</u>** These statistical conclusions support the business decision to roll out the redesigned UI to all customers. With the split-testing routing infrastructure already in place, the engineering effort to fully deploy the UI is minimal and carries negligible risk.
 

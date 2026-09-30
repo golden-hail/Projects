@@ -5,6 +5,13 @@ in a single data analyst portfolio project, the key is to construct a comparativ
 modeling project. You will compare a parametric, interpretable model (Regression) 
 against a non-parametric, instance-based model (KNN).
 
+"Build a linear regression model to predict Customer Lifetime Value (CLTV) based on 
+customer characteristics and service adoption. Compare the performance of models 
+with different feature sets: (1) using only demographic and tenure data, 
+(2) adding service subscriptions, and (3) including contract and payment 
+information. Analyze which features are most predictive and explain the 
+business implications of your findings."
+
 https://www.kaggle.com/datasets/abdallahwagih/telco-customer-churn
 """
 
@@ -13,7 +20,11 @@ https://www.kaggle.com/datasets/abdallahwagih/telco-customer-churn
 ######################################################
 
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
+
+# Silence warnings
+pd.set_option('future.no_silent_downcasting', True)
 
 raw_data = pd.read_excel('telco_customer_churn.xlsx')
 
@@ -21,11 +32,25 @@ raw_data = pd.read_excel('telco_customer_churn.xlsx')
 # Phase 1: Data Cleaning & Feature Engineering
 ######################################################
 
-raw_data.describe()
-raw_data.isna().sum()
+# Drop irrelevent columns and duplicate entries
+raw_data = raw_data.drop(columns = ['Count', 'Country', 'State', 'Lat Long', 'Latitude', 'Longitude', 'Gender', 'Senior Citizen', 'Partner', 'Churn Reason'])
+raw_data.drop_duplicates(inplace=True)
+desc = raw_data.describe()
 
-# raw_data['Total Charges'].dtype # O indicates that it's MIXED!
-# raw_data['Total Charges'].map(type).value_counts()
+# Check for data type uniformity for each variable in the dataset
+for col in raw_data:
+    unique_types = raw_data[col].map(type).unique()
+    if len(unique_types) > 1:
+        print(f"{col} has mixed data types")
+    else:
+        continue
+    
+# Convert raw whitespaces into NaNs
+raw_data = raw_data.replace(r'^\s*$', np.nan, regex=True).infer_objects(copy=False)
+# raw_data = raw_data.replace(r'^\s*$', 0, regex=True).infer_objects(copy=False)
+
+# Check for NaNs. Churn reason has NaNs but we'll keep it for now
+raw_data.isna().sum()
 
 '''
 a) Drop the column for Tenure Months == 0 as there is no data associated with these customers yet
@@ -33,15 +58,15 @@ a) Drop the column for Tenure Months == 0 as there is no data associated with th
 raw_data = raw_data[raw_data['Tenure Months'] != 0]
 
 '''
-b) Get a count of add-on services that each customer has in addition to their base..
+b) Get a count of services that each customer
     # More difficult for customers with greater number of services to leave/switch
 '''
 
-xtra_servs = ['Online Security', 'Online Backup', 'Device Protection', 
+services = ['Phone Service', 'Online Security', 'Online Backup', 'Device Protection', 
               'Tech Support', 'Streaming TV', 'Streaming Movies']
 
 # Creates a True/False column for 'Yes' values and sums across rows (axis=1)
-raw_data['addon_service_count'] = (raw_data[xtra_servs] == 'Yes').sum(axis=1)
+raw_data['service_count'] = (raw_data[services] == 'Yes').sum(axis=1)
 
 '''
 c) Prevent data leakage by... ML (why I chose these columns?) come back to this explanation
@@ -49,8 +74,11 @@ c) Prevent data leakage by... ML (why I chose these columns?) come back to this 
 
 from sklearn.model_selection import train_test_split
 
+## categorical on city?? or drop it?
+reg_data = raw_data['Tenure Months', 'Contract', 'Monthly Charges', 'Total Charges', 'CLTV', 'service_count']
+
 # Define feature sets and target
-target = 'Churn Value'
+target = 'Churn Value' 
 categorical_vars = ["Contract"]
 cols_2_standardize = ['Total Charges', 'Monthly Charges', 'CLTV', 'Tenure Months', 'addon_service_count']
 
@@ -60,6 +88,9 @@ y = raw_data[target].copy()
 
 # Train / Test Split (PREVENTS LEAKAGE)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# check this out somewhere
+raw_data.corr() 
 
 '''
 d) OneHotEncoder categorical variable 'Contract' (feature encoding))
@@ -131,7 +162,7 @@ X_test_num = pd.DataFrame(
 )
 
 '''
-## Combine target and input data inot a single modeling dataset 
+## Combine target and input data into a single modeling dataset 
 '''
 # Merge scaled numerics and encoded categoricals for Training set
 X_train_final = pd.concat([X_train_num, X_train_contract], axis=1)
@@ -160,8 +191,13 @@ print("Features in X_train_final:\n", X_train_final.columns.tolist())
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix
 
+# Instantiate our classification model object
+clf = LogisticRegression
 
+# ???Train our model... why are we doing this again??
+clf.fit(X_train, y_train)
 
+## Do we need feature selection?? 
 
 ######################################################
 # Phase 4: Financial & Lifetime Value Drivers (Linear Regression)

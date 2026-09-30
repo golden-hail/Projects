@@ -99,6 +99,8 @@ X_test_catagorical = pd.DataFrame(
 cols_2_standardize = ['']
 
 from sklearn.preprocessing import StandardScaler
+## For Normalizing, use the following instead
+# from sklearn.preprocessing import MinMaxScaler
 
 # Instantiate Scaler
 scale_standard = StandardScaler()

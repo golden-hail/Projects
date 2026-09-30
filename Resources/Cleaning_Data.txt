@@ -14,8 +14,9 @@
 	• Check and fix data types (df.dtypes, df.astype()).
 		If df.dtypes returns '0', the column has mixed data types
 		df['Col Name'].map(type).value_counts() shows each type and a count
-	• Standardize column names (lower casing, replacing spaces with underscores _).
+	• Commonize column names (lower casing, replacing spaces with underscores _).
 	• Clean string values (trimming leading/trailing whitespace using .str.strip()).
+	• Any improper values? (negatives?)
 
 • Duplicates & Outliers
 	• Check for and remove duplicate rows (df.duplicated(), df.drop_duplicates()).
@@ -32,3 +33,11 @@
 • Exploratory Data Analysis (EDA) & Summary Statistics
 	• Generate summary statistics on cleaned data (df.describe(include='all')).
 	• Plot distributions and relationships (plt.hist(), sns.boxplot(), sns.pairplot()).
+
+• Machine Learning Setup
+	• Feature Scaling: Standardize / Normalize Data
+	• Feature Engineering (ex: TOD hard to process - split into categorical timeframes)
+	• Use OneHotEncoder for categorical variables
+	• Validation split: split all data into at least 2 groups to prevent overfitting
+		• Training set to train the model with
+		• Test/Validation set to see how accurate predictions are on new/ unseen data
