@@ -188,15 +188,15 @@ print("CLTV statistics:")
 print(y_test.describe())
 
 print("\nTenure statistics (after standardization):")
-print(X_train_combined['Tenure Months'].describe())
+print(X_train['Tenure Months'].describe())
 
 # 2. Check if there are missing values
 print("\nMissing values in features:")
-print(X_train_combined.isnull().sum())
+print(X_train.isnull().sum())
 
 # 3. Verify your one-hot encoding worked
 print("\nFeatures in model:")
-print(X_train_combined.columns.tolist())
+print(X_train.columns.tolist())
 
 
 ##############################################################
