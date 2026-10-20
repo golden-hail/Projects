@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "date": "2026-06-01",
+    "description": "Monthly Salary",
+    "amount": 3500.00,
+    "type": "income",
+    "category": "Salary",
+    "tags": ["primary", "fixed"]
+  },
+  {
+    "id": 2,
+    "date": "2026-06-02",
+    "description": "Grocery Store Run",
+    "amount": 124.50,
+    "type": "expense",
+    "category": "Food",
+    "tags": ["groceries", "essentials"]
+  },
+  {
+    "id": 3,
+    "date": "2026-06-03",
+    "description": "Electric Bill",
+    "amount": 78.20,
+    "type": "expense",
+    "category": "Utilities",
+    "tags": ["bills", "monthly"]
+  },
+  {
+    "id": 4,
+    "date": "2026-06-04",
+    "description": "Coffee Shop",
+    "amount": 4.75,
+    "type": "expense",
+    "category": "Food",
+    "tags": ["coffee", "treat"]
+  },
+  {
+    "id": 5,
+    "date": "2026-06-05",
+    "description": "Gas Station",
+    "amount": 45.00,
+    "type": "expense",
+    "category": "Transport",
+    "tags": ["car", "fuel"]
+  },
+  {
+    "id": 6,
+    "date": "2026-06-07",
+    "description": "Movie Tickets",
+    "amount": 28.00,
+    "type": "expense",
+    "category": "Entertainment",
+    "tags": ["fun", "weekend"]
+  },
+  {
+    "id": 7,
+    "date": "2026-06-08",
+    "description": "Freelance Design Work",
+    "amount": 450.00,
+    "type": "income",
+    "category": "Side Hustle",
+    "tags": ["freelance", "extra"]
+  },
+  {
+    "id": 8,
+    "date": "2026-06-10",
+    "description": "Supermarket Restock",
+    "amount": 65.30,
+    "type": "expense",
+    "category": "Food",
+    "tags": ["groceries", "essentials"]
+  },
+  {
+    "id": 9,
+    "date": "2026-06-12",
+    "description": "Internet Bill",
+    "amount": 60.00,
+    "type": "expense",
+    "category": "Utilities",
+    "tags": ["bills", "monthly"]
+  },
+  {
+    "id": 10,
+    "date": "2026-06-13",
+    "description": "Restaurant Dinner",
+    "amount": 82.50,
+    "type": "expense",
+    "category": "Food",
+    "tags": ["dining", "fun"]
+  },
+  {
+    "id": 11,
+    "date": "2026-06-15",
+    "description": "Gym Membership",
+    "amount": 40.00,
+    "type": "expense",
+    "category": "Health",
+    "tags": ["fitness", "monthly"]
+  },
+  {
+    "id": 12,
+    "date": "2026-06-16",
+    "description": "Streaming Service Subscription",
+    "amount": 15.99,
+    "type": "expense",
+    "category": "Entertainment",
+    "tags": ["subscriptions", "monthly"]
+  },
+  {
+    "id": 13,
+    "date": "2026-06-18",
+    "description": "Pharmacy (Vitamin Supps)",
+    "amount": 22.40,
+    "type": "expense",
+    "category": "Health",
+    "tags": ["pharmacy"]
+  },
+  {
+    "id": 14,
+    "date": "2026-06-20",
+    "description": "Car Wash",
+    "amount": 18.00,
+    "type": "expense",
+    "category": "Transport",
+    "tags": ["car"]
+  },
+  {
+    "id": 15,
+    "date": "2026-06-21",
+    "description": "Bakery",
+    "amount": 12.00,
+    "type": "expense",
+    "category": "Food",
+    "tags": ["treat", "food"]
+  },
+  {
+    "id": 16,
+    "date": "2026-06-22",
+    "description": "Online Course Purchase",
+    "amount": 49.99,
+    "type": "expense",
+    "category": "Education",
+    "tags": ["learning", "skills"]
+  },
+  {
+    "id": 17,
+    "date": "2026-06-24",
+    "description": "Public Transit Pass",
+    "amount": 35.00,
+    "type": "expense",
+    "category": "Transport",
+    "tags": ["transit"]
+  },
+  {
+    "id": 18,
+    "date": "2026-06-26",
+    "description": "Dividends Payout",
+    "amount": 14.25,
+    "type": "income",
+    "category": "Investments",
+    "tags": ["passive", "stocks"]
+  },
+  {
+    "id": 19,
+    "date": "2026-06-28",
+    "description": "Grocery Top-up",
+    "amount": 31.10,
+    "type": "expense",
+    "category": "Food",
+    "tags": ["groceries"]
+  },
+  {
+    "id": 20,
+    "date": "2026-06-30",
+    "description": "Water Bill",
+    "amount": 42.10,
+    "type": "expense",
+    "category": "Utilities",
+    "tags": ["bills", "monthly"]
+  }
+]

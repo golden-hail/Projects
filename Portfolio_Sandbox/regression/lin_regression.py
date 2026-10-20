@@ -4,7 +4,7 @@
 
 import pandas as pd
 import numpy as np
-from sklearn.utils import shuffle
+# from sklearn.utils import shuffle
 
 # Silence warnings
 pd.set_option('future.no_silent_downcasting', True)
@@ -33,32 +33,9 @@ raw_data = raw_data.replace(r'^\s*$', np.nan, regex=True).infer_objects(copy=Fal
 # Drop the column for Tenure Months == 0 as there is no data associated with these customers yet
 raw_data = raw_data[raw_data['Tenure Months'] != 0]
 
-# Shuffle data
-raw_data = shuffle(raw_data)
-
 ##############################################################
 # Feature Engineering
 ##############################################################
-
-'''split the data into training and test sets'''
-from sklearn.model_selection import train_test_split, cross_val_score, KFold
-
-# Recode 'No internet service' / 'No phone service' to plain 'No' in the service type columns.
-# Otherwise OneHotEncoding creates identical duplicate columns, which splits coefficients and confuses RFECV's ranking.
-# That information is still captured once by 'Internet Service' and 'Phone Service'.
-service_cols = ["Multiple Lines", "Online Security", "Online Backup", "Device Protection",
-              "Tech Support", "Streaming TV", "Streaming Movies"]
-raw_data[service_cols] = raw_data[service_cols].replace(
-    {"No internet service": "No", "No phone service": "No"}
-)
-
-# Agg Number of Services into DataFrame 
-
-services = ['Phone Service', 'Online Security', 'Online Backup', 'Device Protection', 
-              'Tech Support', 'Streaming TV', 'Streaming Movies']
-
-# Creates a True/False column for 'Yes' values and sums across rows (axis=1)
-raw_data['Number of Services'] = (raw_data[services] == 'Yes').sum(axis=1)
 
 # Define feature sets and target
 feature_sets = {
@@ -78,14 +55,26 @@ feature_sets = {
 
 target = 'CLTV'
 
-def cust_churn_regression(raw_data, feat_set, num_vars, categorical_vars, target):
-    # Select predictor features (X) and target (y)
-    X = raw_data[num_vars + categorical_vars].copy()
-    y = raw_data[target].copy()
-    
-    # Train / Test Split (PREVENTS LEAKAGE)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-    
+# Recode 'No internet service' / 'No phone service' to 'No' in the service type columns for
+## OneHotEncoding, "Yes" or "No".
+# That information is still captured once by 'Internet Service' and 'Phone Service'.
+
+service_cols = ["Multiple Lines", "Online Security", "Online Backup", "Device Protection",
+              "Tech Support", "Streaming TV", "Streaming Movies"]
+
+raw_data[service_cols] = raw_data[service_cols].replace(
+    {"No internet service": "No", "No phone service": "No"}
+)
+
+# Agg Number of Services into DataFrame 
+services = ['Phone Service', 'Online Security', 'Online Backup', 'Device Protection', 
+              'Tech Support', 'Streaming TV', 'Streaming Movies']
+
+# Creates a True/False column for 'Yes' values and sums across rows (axis=1)
+raw_data['Number of Services'] = (raw_data[services] == 'Yes').sum(axis=1)
+
+# Function for OneHotEncoding and Standardizing 
+def feature_eng(X_train, X_test, categorical_vars, num_vars):
     '''oneHotEncoder for categorical vars'''
     from sklearn.preprocessing import OneHotEncoder, StandardScaler
     
@@ -109,6 +98,19 @@ def cust_churn_regression(raw_data, feat_set, num_vars, categorical_vars, target
     X_train[num_vars] = scaler.fit_transform(X_train[num_vars])
     X_test[num_vars] = scaler.transform(X_test[num_vars])
     
+    return X_train, X_test, encoder_feature_names
+
+def CLTV_lin_reg_predict(raw_data, feat_set, num_vars, categorical_vars, target):
+    from sklearn.model_selection import train_test_split, cross_val_score, KFold
+    # Select predictor features (X) and target (y)
+    X = raw_data[num_vars + categorical_vars].copy()
+    y = raw_data[target].copy()
+    
+    # Split the data into training and test sets (PREVENTS LEAKAGE)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    X_train, X_test, encoder_feature_names = feature_eng(X_train, X_test, categorical_vars, num_vars)
+    
     ##############################################################
     # Apply Linear Regression
     ##############################################################
@@ -124,7 +126,6 @@ def cust_churn_regression(raw_data, feat_set, num_vars, categorical_vars, target
     '''simple'''
     from sklearn.metrics import r2_score, mean_squared_error
     
-    # STEP 4: Evaluate
     y_pred_train = regressor.predict(X_train)
     y_pred_test = regressor.predict(X_test)
     
@@ -136,12 +137,6 @@ def cust_churn_regression(raw_data, feat_set, num_vars, categorical_vars, target
     print(f"Train R²: {r2_train:.4f}")
     print(f"Test R²: {r2_test:.4f}")
     print(f"Test RMSE: ${rmse_test:.2f}")
-    
-    '''
-    Train R²: 0.1566
-    Test R²: 0.1595
-    Test RMSE: $1075.79
-    '''
     
     # translate results
     
@@ -160,7 +155,7 @@ def cust_churn_regression(raw_data, feat_set, num_vars, categorical_vars, target
     print(r_squared)
     
     # Cross Validation
-    cv = KFold(n_splits = 4, shuffle = True)
+    cv = KFold(n_splits = 4, shuffle = True, random_state=42)
     cv_scores = cross_val_score(regressor, X_train, y_train, cv = cv, scoring = "r2")
     cv_scores.mean()
     
@@ -185,7 +180,7 @@ results = {}
 # Unpack each feature set from the dictionary to run the function on each  
 for feature_set, config in feature_sets.items():
     print(f"\n--- Running: {feature_set} ---")
-    results[feature_set] = cust_churn_regression(
+    results[feature_set] = CLTV_lin_reg_predict(
         raw_data=raw_data, feat_set=feature_set, 
         target=target, **config)
 
@@ -223,3 +218,11 @@ print(X_train['Tenure Months'].describe())
 # improvement_3_to_2 = r2_test_part3 - r2_test_part2
 # print(f"Part 2 improvement: +{improvement_2_to_1:.4f}")
 # print(f"Part 3 improvement: +{improvement_3_to_2:.4f}")
+
+''' notes: Your model is weak, and that’s a finding. Your train R² (0.157) 
+and test R² (0.160) are close, so the model isn’t overfitting. 
+It’s underfitting: these features explain only about 16% of the variance in CLTV, 
+and the RMSE ($1,076) is close to the standard deviation of CLTV (about $1,183). 
+This is worth presenting honestly in your portfolio. 
+You could also test whether Monthly Charges improves the fit. 
+It’s excluded from all three feature sets, and it’s a plausible strong predictor of CLTV.'''
