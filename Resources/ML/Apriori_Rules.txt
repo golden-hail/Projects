@@ -1,0 +1,107 @@
+Here's a reference you can paste straight into Notepad:
+
+```
+APRIORI RULES (apyori) - QUICK REFERENCE
+========================================
+
+1. CORE IDEA
+------------
+Apriori finds itemsets that appear together often enough to matter,
+then turns them into directional rules "A -> B".
+
+2. KEY METRICS
+--------------
+Support     = transactions containing A and B / total transactions
+              "How common is this pair overall?"
+
+Confidence  = support(A and B) / support(A)
+              "If someone buys A, how often do they also buy B?"
+
+Lift        = confidence / support(B)
+              "Is the link stronger than random chance?"
+              1 = no relationship, >1 = positive association, <1 = negative
+
+3. THRESHOLD PARAMETERS (apriori call)
+--------------------------------------
+min_support     Minimum support to keep an itemset. Lower = more rules, slower.
+min_confidence  Minimum confidence for a rule to be kept.
+min_lift        Minimum lift for a rule to be kept.
+min_length      Smallest number of items in an itemset (2 = pairs).
+max_length      Largest number of items in an itemset (2 = pairs only).
+
+4. OUTPUT STRUCTURE (apyori)
+----------------------------
+apriori() returns a generator. Always wrap it in list().
+
+RelationRecord(items, support, ordered_statistics)
+    items               frozenset of all products in the itemset
+    support             support of the whole itemset
+    ordered_statistics  list of directional rules
+
+OrderedStatistic(items_base, items_add, confidence, lift)
+    items_base          antecedent ("if" side), frozenset
+    items_add           consequent ("then" side), frozenset
+    confidence          confidence of base -> add
+    lift                lift of base -> add
+
+Check field order anytime:
+    RelationRecord._fields
+    OrderedStatistic._fields
+
+5. ACCESSING VALUES (prefer field names over indices)
+-----------------------------------------------------
+Index form              Named form
+rule[1]                 record.support
+rule[2][0]              record.ordered_statistics[0]
+rule[2][0][0]           stat.items_base
+rule[2][0][1]           stat.items_add
+rule[2][0][2]           stat.confidence
+rule[2][0][3]           stat.lift
+
+Frozensets can't be indexed. Convert to a single name with:
+    list(stat.items_base)[0]
+
+6. STANDARD FLATTENING PATTERN
+------------------------------
+Loop over records AND their ordered_statistics so both directions
+of each pair are captured:
+
+rows = []
+for record in apriori_rules:
+    for stat in record.ordered_statistics:
+        rows.append({
+            "product1": list(stat.items_base)[0],
+            "product2": list(stat.items_add)[0],
+            "support": record.support,
+            "confidence": stat.confidence,
+            "lift": stat.lift,
+        })
+df = pd.DataFrame(rows)
+
+7. HAND-CHECK TOY EXAMPLE
+-------------------------
+transactions = [
+    ['beer', 'chips'],
+    ['beer', 'chips', 'wine'],
+    ['chips'],
+    ['beer', 'wine'],
+]
+{beer, chips}:
+    support            = 2/4   = 0.5
+    confidence (beer->chips) = 2/3 ≈ 0.667
+    lift               = 0.667 / 0.75 ≈ 0.889
+
+8. COMMON PITFALLS
+------------------
+- Forgetting list() around the apriori generator (it can only be read once)
+- Reading only ordered_statistics[0], which drops the reverse direction
+- Mixing up items_base (antecedent) and items_add (consequent)
+- Forgetting list() around a frozenset before indexing it
+- Thinking low confidence means a bad rule; check lift and support too
+
+9. INTERVIEW ONE-LINER
+----------------------
+"apyori returns nested namedtuples. Each rule has a support value and a
+list of directional statistics. I loop over those statistics to capture
+both directions, and I access fields by name for readability."
+```
